@@ -60,7 +60,9 @@ class weapon:
             level['displayName'] = level['displayName'].replace(self.name, '').replace('\n', '').replace(
                 '（', '').replace('）', '').replace(' / ', '').replace('／', '/').replace('(', '').replace(')', '').replace('：', '').replace(' - ', '').replace('。', '')
             for descr in dict(description_to_del).values():
-                level['displayName'] = level['displayName'].replace(descr, '')
+                for subdescr in descr:
+                    level['displayName'] = level['displayName'].replace(
+                        subdescr, '')
             try:
                 if level['levelItem'] == None:
                     level['levelItem'] = levelup_info['EEquippableSkinLevelItem::VFX']
@@ -120,7 +122,6 @@ class weaponlib:
         self.per = discountPersentage
         for level in self.levels:
             level['uuid'] = level['uuid'].upper()
-            # level['displayName'] = level['displayName'].replace(self.name, '').replace('.', '').replace('。', '')
             level['displayName'] = level['displayName'].replace(self.name, '').replace('\n', '').replace(
                 '（', '').replace('）', '').replace(' / ', '').replace('／', '/').replace('(', '').replace(')', '').replace('：', '').replace(' - ', '').replace('。', '')
             for descr in dict(description_to_del).values():
